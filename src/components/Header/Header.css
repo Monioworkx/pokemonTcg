@@ -1,0 +1,45 @@
+@font-face {
+    font-family: "pokemon-font";
+    src: url("../../fonts/PokemonSolid.ttf");
+}
+
+@font-face {
+    font-family: "andy-bold";
+    src: url("../../fonts/andyBold.TTF");
+}
+
+.header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(14, 14, 14, 0.616);
+    border-radius: 16px;
+}
+
+.logo-header {
+    width: auto;
+    height: 100%;
+    margin-left: 224px;
+    text-align:start;
+    font-family: "pokemon-font";
+    font-size: 10vw;
+    letter-spacing: 2px;
+    -webkit-text-stroke: 2px rgb(61, 125, 202);
+    color: rgb(255, 203, 5);
+    text-shadow: 4px 4px 0px rgba(209, 59, 255, 0.616);
+    background-color: aqua;
+}
+
+.catch-them {
+    height: 100%;
+    margin-left: 224px;
+    text-align: center;
+    font-family: "andy-bold";
+    font-size: 4vw;
+    letter-spacing: 4px;
+    -webkit-text-stroke: 4px rgb(61, 125, 202);
+    color: rgb(219, 219, 219);
+}
