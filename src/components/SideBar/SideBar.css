@@ -8,6 +8,7 @@
     height: 100vh;
     position: fixed;
     transition: width 300ms ease;
+    z-index: 999;
     
 }
 .side-bar ul {
@@ -16,12 +17,18 @@
     align-items: flex-start;
     justify-content: space-between;
 }
-.side-bar li {
+.side-bar li{
     padding: 32px 32px;
     list-style: none;
     color:#fff;
-    
+    cursor: pointer;
 }
+.link-item {
+    padding: 32px 32px;
+    list-style: none;
+    color:#fff;
+}
+
 .side-bar a {
     text-decoration: none;
     color: #fff;
@@ -42,7 +49,7 @@
     margin-right: 0;
 }
 
-.side-bar.collapsed a {
+.side-bar.collapsed .link-text {
     visibility: hidden;
     opacity: 0;
     transition: visibility 600ms, opacity 0ms ease;
