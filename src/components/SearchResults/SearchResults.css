@@ -1,0 +1,25 @@
+.search-results-container {
+    width: 95%;
+    height: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 28px;
+    margin-bottom: 28px;
+    background-color: rgba(70, 63, 58, 0.678);
+    border-radius: 8px; 
+    box-shadow: rgba(41, 85, 104, 0.12) 0px 2px 4px 0px, rgba(120, 197, 230, 0.32) 0px 2px 16px 0px;
+    z-index: 1;
+    display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 10px;
+}
+
+.view-image-container {
+    padding: 16px;
+    display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 16px;
+}

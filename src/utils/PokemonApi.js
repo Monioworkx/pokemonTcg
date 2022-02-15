@@ -16,6 +16,13 @@ const PokemonApi = {
     async getCards() {
         return pokemonApiFetch(`https://api.pokemontcg.io/v2/cards`);
     },
+
+    async getPokemonAll(arg) {
+        return pokemonApiFetch(`https://api.pokemontcg.io/v2/cards?${arg}`);
+    }
 }
+
+
+
 
 export default PokemonApi;

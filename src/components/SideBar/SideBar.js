@@ -7,24 +7,18 @@ import './SideBar.css'
 import { Link , NavLink } from "react-router-dom";
 
 const SideBar = () => {
-    const sidebarCollapsed = localStorage.getItem('sidebar-collapsed');
-    const [isExpanded, setIsExpanded] = useState(sidebarCollapsed ? true : false);
+    const [isExpanded, setIsExpanded] = useState(false);
 
-    const handleToggler = () => {
-        if (isExpanded) {
-            setIsExpanded(false);
-            localStorage.setItem('sidebar-collapsed', true);
-            return;
-        }
-        setIsExpanded(true);
-        localStorage.removeItem('sidebar-collapsed')
+    const handleExpandSidebar = (event) => {
+        setIsExpanded(!isExpanded);
+        event.preventDefault();
     };
 
     return (
         <nav className={isExpanded ? "side-bar" : "side-bar collapsed"}>
             <ul>
                 <li>
-                    <FontAwesomeIcon onClick={handleToggler} className="hamb" icon={ faAnglesRight } />
+                    <FontAwesomeIcon onClick={handleExpandSidebar} className={isExpanded ? "hamb rotate" : "hamb"} icon={ faAnglesRight } />
                 </li>
                 <NavLink className="link-item" to='/'>
                     <FontAwesomeIcon className="link-icon" icon={ faHouseChimney } />

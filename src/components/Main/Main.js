@@ -16,7 +16,6 @@ const Main = () => {
 
     return (
         <div>
-            <h1>Main</h1>
             {(cards?.slice(0,10))?.map(card => (
                 <PokemonCard cardId={card.id} />
             ) )}
