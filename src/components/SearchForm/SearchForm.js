@@ -2,24 +2,13 @@ import React, { useEffect, useState } from "react";
 
 import './SearchForm.css';
 
-const SearchForm = () => {
-    const [inputData, setInputData] = useState({
-        cardName: '',
-        supertype: '',
-    });
-    const handleOnChange = (event) => {
-        setInputData({
-            ...inputData,
-            [event.target.name] : event.target.value
-        }); 
-        event.preventDefault();
-        console.log(inputData);
-    }
+const SearchForm = (props) => {
+
 
     return (
         <div className="search-form-container">
-            <form>
-                <input onChange={handleOnChange} className="input-holder" type="text" name="cardName" placeholder="Card name" />
+            <form onSubmit={props.handleSubmit}>
+                <input onChange={props.handleOnChange} className="input-holder" type="text" name="cardName" placeholder="Card name" />
                 <input className="input-holder" type="text" name="supertype" placeholder="Supertype" />
                 <input className="input-holder" type="number" name="crc" placeholder="Converted retreat cost" />
                 <input className="input-holder" type="number" name="cec" placeholder="Converted energy cost" />
