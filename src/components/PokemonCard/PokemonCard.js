@@ -15,7 +15,7 @@ const PokemonCard = (props) => {
 
     return (
         <div className="pokemon-card-container">
-            <img src={cardData?.images.small} alt='not' />
+            <img src={cardData?.images.small} alt='Searching card!' />
         </div>
     );
 }

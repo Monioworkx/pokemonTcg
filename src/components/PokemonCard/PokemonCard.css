@@ -15,3 +15,11 @@
     object-fit: cover;
 }
 
+.pokemon-card-container:hover {
+    transform:scale(1.8);
+    transition: all 150ms ease;
+    cursor: pointer;
+    box-shadow: rgba(73, 192, 57, 0.527) 0px 2px 4px 0px, rgba(32, 226, 7, 0.459) 0px 2px 16px 0px;
+    filter: contrast(105%) brightness(105%);
+}
+
