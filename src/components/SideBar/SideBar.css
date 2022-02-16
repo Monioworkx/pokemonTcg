@@ -3,7 +3,6 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    background-color: rgba(181, 23, 157, 0.965);
     width: 224px;
     height: 100%;
     position: fixed;
@@ -11,6 +10,16 @@
     z-index: 999;
     overflow: hidden;
     
+}
+
+.purple {
+    background-color: rgba(181, 23, 157, 0.856);
+    transition: background-color 100ms ease;
+}
+
+.black {
+    background-color: rgba(20, 20, 20, 0.815);
+    transition: background-color 100ms ease;
 }
 .side-bar ul {
     display: flex;

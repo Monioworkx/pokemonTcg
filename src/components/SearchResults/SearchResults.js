@@ -5,24 +5,35 @@ import './SearchResults.css';
 
 import PokemonCard from '../../components/PokemonCard/PokemonCard'
 import PokemonCardViewList from "../PokemonCardViewList/PokemonCardViewList";
+import SearchForm from "../SearchForm/SearchForm";
+
+import useChangeListViewMode from "../../Hooks/useChangeListViewMode";
 
 const SearchResults = (props) => {
+    
+ 
     return (
         <div className="search-results-container">             
             <div className={props.loading ? "lds-ring" : "lds-ring not-visible"}><div></div><div></div><div></div><div></div></div>
-            <div className={props.loading ? "not-visible" : "image-container"}>
-                {(props.cards?.slice(0,21))?.map(card => (
+            <div id="image" className=
+                {
+                `${props.loading ? "not-visible image-container" : "image-container"}  
+                 ${props.activeImages ? " " : "not-active"}`
+                }>
+                {(props.cards?.slice(0,24))?.map(card => (
                     <PokemonCard cardId={card.id} />
                 ) )}
             </div> 
-            <div className="list-container">
+            <div id="list" className={props.activeList ? "list-container" : "list-container not-active"}>
                 <table className="table-container">
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Rarity</th>
-                    <th></th>
-                    <th>Set</th>
-                    <th>Series</th>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Rarity</th>
+                        <th>Logo</th>
+                        <th>Set</th>
+                        <th>Series</th>
+                    </tr>
                     {(props.cards?.slice(0,33))?.map(card => (
                             <PokemonCardViewList cardId={card.id} />
                     ) )}

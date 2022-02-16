@@ -3,9 +3,11 @@ import React, { useEffect, useState } from "react";
 import './SearchForm.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage, faList } from "@fortawesome/free-solid-svg-icons";
+
+/* import useChangeListViewMode from "../../Hooks/useChangeListViewMode";
+ */import SearchResults from "../SearchResults/SearchResults";
+
 const SearchForm = (props) => {
-
-
     return (
         <div className="search-form-container">
             <form className="form-input-container" onSubmit={props.handleSubmit}>
@@ -20,8 +22,12 @@ const SearchForm = (props) => {
  */}                <button type="submit">Search</button>
             </form>
             <div className="view-list-select-mode">
-                <FontAwesomeIcon className="view-icon" icon={faImage} />
-                <FontAwesomeIcon className="view-icon"  icon={faList} /> 
+                <FontAwesomeIcon onClick={props.handleImagesIconOnClick} 
+                                 className={props.activeImages ? "view-icon onGreen" : "view-icon"} 
+                                 icon={faImage} />
+                <FontAwesomeIcon onClick={props.handleListIconOnClick}
+                                 className={props.activeList ? "view-icon onGreen" : "view-icon"}
+                                 icon={faList} /> 
             </div>    
         </div>
     );

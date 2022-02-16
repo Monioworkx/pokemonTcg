@@ -81,4 +81,12 @@
     font-size: 1.2rem;
     cursor: pointer;
     margin: 8px;
+    padding-bottom: 3px;
+}
+
+.onGreen {
+    /* color: rgba(144, 214, 52, 0.616); */
+    filter: brightness(150%);
+    transform: scale(1.2);
+    border-bottom: 1px solid rgba(144, 214, 52, 0.616);
 }
