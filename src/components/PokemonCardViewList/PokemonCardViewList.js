@@ -12,22 +12,16 @@ const PokemonCardViewList = (props) => {
         PokemonApi.getCardData(cardId)
             .then(cardData => setCardData(cardData));
             
-    }, [cardId]); 
+    }, []); 
 
     return (
-        <div className="pokemon-card-list-container">
-            <table>
-                <tr>
-                    <td>{cardData?.name}</td>
-                    <td>{cardData?.types}</td>
-                    <td>{cardData?.weaknesses[0].type}</td>
-                    <td>{cardData?.convertedRetdeatCost}</td>
-                    <td>{cardData?.rarity}</td>
-                    <td>{cardData?.set.name}</td>
-                    <td>{cardData?.set.series}</td>
-                </tr>
-            </table>
-        </div>
+        <>
+            <td>{cardData && cardData.name ? cardData.name : "'Not available'"}</td>
+            <td>{cardData && cardData.types ? cardData.types : "'Not available'"}</td>
+            <td>{cardData && cardData.rarity ? cardData.rarity : "'Not available'"}</td>
+            <img className="set-logo" src={cardData?.set.images.symbol} alt="not" />             <td>{cardData && cardData.set.name ? cardData.set.name : "'Not available'"}</td>
+            <td>{cardData && cardData.set.series ? cardData.set.series : "'Not available'"}</td>
+        </>
     );
 }
 

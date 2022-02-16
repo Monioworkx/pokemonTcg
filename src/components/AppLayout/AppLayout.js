@@ -9,14 +9,16 @@ import './AppLayout.css';
 
 const AppLayout = () => {
     return (
-        <>
-            <SideBar />
+        <div className="appLayout">
+            <div>
+                <SideBar />
+            </div>
             <div className="app-container">
                 <div className="page-content">
                     <Outlet />
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 
