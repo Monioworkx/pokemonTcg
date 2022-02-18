@@ -24,7 +24,7 @@ const DeckEditor = () => {
     return (
         <div className="section-container">
             <div className="deck-editor-container">
-                
+                <div>{decks}</div>
                     
                 <form className="form-input-container" onSubmit={handleSaveDeck}>
                     <input onChange={handleDeckNameChange} className="input-holder" type="text" name="deckName" placeholder="Card name" />

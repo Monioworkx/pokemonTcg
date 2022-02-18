@@ -4,6 +4,7 @@ import PokemonApi from "../utils/PokemonApi";
 
 const useSearchCardData = () =>{
     const [dataToSearch, setDataToSearch] = useState('Pikachu');
+    const [search, setSearch] = useState();
     const [cards, setCards] = useState();
     const [loading, setLoading] = useState(true);
     const [inputData, setInputData] = useState({
@@ -26,18 +27,21 @@ const useSearchCardData = () =>{
         });
     }, [dataToSearch]); 
 
+    useEffect(() => {
+        setSearch(inputData.cardName);
+    },[inputData]);
+
     const handleOnChange = (event) => {
         setInputData({
             ...inputData,
             [event.target.name] : event.target.value
         }); 
     }
-
     const handleSubmit = (event) => {
+        setDataToSearch(search);
         event.preventDefault();
-        setDataToSearch(inputData.cardName)
-        
     }
+
     return [loading, cards, handleOnChange, handleSubmit];
 }
 

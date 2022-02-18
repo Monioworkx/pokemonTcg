@@ -27,9 +27,12 @@ const useFirebase = () => {
             })
         }
         getFirebaseDeckData();
-        console.log(userDecks);
         setDecks(userDecks);
     }, []);
+
+    if (decks.length > 0) {
+        console.log(JSON.stringify(decks[1][0].cardList));
+    }
 
     useEffect(() => {
         setDeckName(inputData.deckName);
@@ -41,7 +44,7 @@ const useFirebase = () => {
             [event.currentTarget.name] : event.currentTarget.value
         });
     }
-
+    
     const handleSaveDeck = async (event) => {
         event.preventDefault();
         await addDoc(decksCollectionRef, {name: deckName, cards: deckCards} )
