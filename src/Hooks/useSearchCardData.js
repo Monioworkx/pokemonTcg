@@ -16,14 +16,15 @@ const useSearchCardData = () =>{
         PokemonApi.getPokemonAll(`q=name:${dataToSearch}`).then((cards) => {
             setLoading(false);
             setCards(cards);
-            setLoading(true);
+            
         });
-    }, [dataToSearch]);
+    }, []);
 
     useEffect(() =>{
         PokemonApi.getPokemonAll(`q=name:${dataToSearch}*`).then((cards) => {
             setLoading(false);
             setCards(cards);
+            
         });
     }, [dataToSearch]); 
 
@@ -36,9 +37,11 @@ const useSearchCardData = () =>{
             ...inputData,
             [event.target.name] : event.target.value
         }); 
+        
     }
     const handleSubmit = (event) => {
         setDataToSearch(search);
+        setLoading(true);
         event.preventDefault();
     }
 

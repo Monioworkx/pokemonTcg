@@ -30,9 +30,9 @@ const useFirebase = () => {
         setDecks(userDecks);
     }, []);
 
-    if (decks.length > 0) {
+/*     if (decks.length > 0) {
         console.log(JSON.stringify(decks[1][0].cardList));
-    }
+    } */
 
     useEffect(() => {
         setDeckName(inputData.deckName);
