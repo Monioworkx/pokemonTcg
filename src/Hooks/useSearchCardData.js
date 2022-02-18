@@ -34,10 +34,10 @@ const useSearchCardData = () =>{
     }
 
     const handleSubmit = (event) => {
-        setDataToSearch(inputData.cardName)
         event.preventDefault();
+        setDataToSearch(inputData.cardName)
+        
     }
-    console.log(dataToSearch);
     return [loading, cards, handleOnChange, handleSubmit];
 }
 

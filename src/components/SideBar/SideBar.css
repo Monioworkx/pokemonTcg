@@ -2,30 +2,39 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between;
-    width: 224px;
+    justify-content: flex-start;
+    max-width: 224px;
     height: 100%;
-    position: fixed;
-    transition: width 300ms ease;
+    transition: max-width 300ms ease-in-out !important;
     z-index: 999;
     overflow: hidden;
-    
 }
 
 .purple {
     background-color: rgba(181, 23, 157, 0.856);
     transition: background-color 100ms ease;
 }
+.purple .link-item:hover {
+    background-color: rgba(86, 175, 78, 0.239) ;
+}
 
 .black {
     background-color: rgba(20, 20, 20, 0.815);
     transition: background-color 100ms ease;
+    
+
 }
-.side-bar ul {
+.black .link-item:hover {
+    background-color: rgba(218, 101, 208, 0.363) ;
+}
+.nav-items {
+    margin: 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
+    flex-wrap: nowrap;
+    width: 224px;
 }
 .side-bar li{
     padding: 32px 32px;
@@ -41,9 +50,11 @@
 }
 .rotate {
     transform: rotate3d(0,1,0,180deg);
-    transition: all 450ms ease;
-    
+    transition: transform 450ms ease;
 }
+
+.hamb {
+    transition: transform 450ms ease;}
 
 .link-item {
     width: 100%;
@@ -55,31 +66,33 @@
     transform: scale(1.06);
     transition: all 200ms ease;
     text-shadow: 2px 0px 4px #222;
-    background-color: rgba(86, 175, 78, 0.239);
+    
 }
 
-.side-bar a {
+.side-bar .link-text {
+    display: inline-block;
     text-decoration: none;
     color: #fff;
     visibility: visible;
     opacity: 1;
     transition: visibility 600ms, opacity 1000ms ease-in-out;
+    font-size: 1rem;
 }
 .link-icon {
     margin-right: 24px;
 }
 
 .side-bar.collapsed {
-    width: 80px;
-    transition: width 300ms ease;
+    max-width: 68px;
+
 }
 
 .side-bar.collapsed .link-icon {
-    margin-right: 0;
+    margin-right: 24px;
 }
 
-.side-bar.collapsed .link-text {
+ .side-bar.collapsed .link-text {
     visibility: hidden;
     opacity: 0;
-    transition: visibility 600ms, opacity 0ms ease;
-}
+    transition: visibility 0ms, opacity 0ms ease;
+} 

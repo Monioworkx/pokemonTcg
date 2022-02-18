@@ -8,6 +8,7 @@ const PokemonCardViewList = (props) => {
     const cardId = props.cardId;
     const [cardData, setCardData] = useState();
     
+    let isMounted = true;
     useEffect(() =>{
         PokemonApi.getCardData(cardId)
             .then(cardData => setCardData(cardData));
@@ -16,12 +17,12 @@ const PokemonCardViewList = (props) => {
 
     return (
         <tr className="tr-card">
-            <td>{cardData && cardData.name ? cardData.name : "'Not available'"}</td>
-            <td>{cardData && cardData.types ? cardData.types : "'Not available'"}</td>
-            <td>{cardData && cardData.rarity ? cardData.rarity : "'Not available'"}</td>
-            <td><img className="set-logo" src={cardData?.set.images.symbol} alt="not" /></td>        
-            <td>{cardData && cardData.set.name ? cardData.set.name : "'Not available'"}</td>
-            <td>{cardData && cardData.set.series ? cardData.set.series : "'Not available'"}</td>
+            <td className="column1">{cardData && cardData.name ? cardData.name : "'Not available'"}</td>
+            <td className="column2">{cardData && cardData.types ? cardData.types : "'Not available'"}</td>
+            <td className="column3">{cardData && cardData.rarity ? cardData.rarity : "'Not available'"}</td>
+            <td className="column4"><img className="set-logo" src={cardData?.set.images.symbol} alt="not" /></td>        
+            <td className="column5">{cardData && cardData.set.name ? cardData.set.name : "'Not available'"}</td>
+            <td className="column6">{cardData && cardData.set.series ? cardData.set.series : "'Not available'"}</td>
         </tr>
     );
 }

@@ -1,0 +1,19 @@
+.deck-editor-main-container {
+    background-color: rgba(70, 58, 58, 0.493);
+    border-radius: 8px; 
+    box-shadow: rgba(41, 85, 104, 0.12) 0px 2px 4px 0px, rgba(120, 197, 230, 0.32) 0px 2px 16px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* min-width: calc(100vw - 224px) */
+    width: 100%;
+    height: 100%;
+    
+}
+.toCreate-link {
+    width: 200px;
+    height: 200px;
+    background-color: yellow;
+    cursor: pointer;
+}

@@ -3,14 +3,19 @@ import React, { useEffect, useState} from "react";
 import './PokemonCard.css';
 
 import PokemonApi from '../../utils/PokemonApi'
+import useMounted from "../../Hooks/useMounted";
 
 const PokemonCard = (props) => {
     const cardId = props.cardId;
     const [cardData, setCardData] = useState();
-    
-    useEffect(() =>{
+    const isMounted = useMounted();
+
+    useEffect(() => {
         PokemonApi.getCardData(cardId)
-            .then(cardData => setCardData(cardData));
+            .then(cardData => { 
+                if (!isMounted) return; 
+                setCardData(cardData)
+            });
     }, []); 
 
     return (

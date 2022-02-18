@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAnglesRight, faFolderOpen, faHouseChimney, faMagnifyingGlass, faSquarePlus } from '@fortawesome/free-solid-svg-icons';
 import './SideBar.css'
 
-import { Link , NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const SideBar = () => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -12,18 +12,18 @@ const SideBar = () => {
 
     useEffect(() => {
         setColor(window.localStorage.getItem('color'));
-      }, []);
+    }, []);
     
-      useEffect(() => {
+    useEffect(() => {
         window.localStorage.setItem('color', color);
-      }, [color]); 
+    }, [color]); 
 
     const handleExpandSidebar = (event) => {
         setIsExpanded(!isExpanded);
     };
 
-    const handleChangeSidebarColor = (event) => {
-        setColor(event.currentTarget.id);
+    const handleChangeSidebarColor = (color) => {
+        setColor(color);
     }
 
     return (
@@ -32,27 +32,27 @@ const SideBar = () => {
             ${isExpanded ? "side-bar" : "side-bar collapsed"}
             ${color}
             `}>
-            <ul>
+            <div className="nav-items">
                 <li>
                     <FontAwesomeIcon onClick={handleExpandSidebar} className={isExpanded ? "hamb rotate" : "hamb"} icon={ faAnglesRight } />
                 </li>
-                <NavLink className="link-item" to='/'>
+                <NavLink className="link-item" to='/' onClick={() => handleChangeSidebarColor('purple')}>
                     <FontAwesomeIcon className="link-icon" icon={ faHouseChimney } />
-                    <a className="link-text" href="#top">Home</a>
+                    <span className="link-text" href="#top">Home</span>
                 </NavLink>
-                <NavLink className="link-item" to='/main'>
+                <NavLink className="link-item" to='/main' onClick={() => handleChangeSidebarColor('purple')}>
                     <FontAwesomeIcon className="link-icon" icon={ faFolderOpen } />
-                    <a className="link-text" href="#top">My Decks</a>
+                    <span className="link-text" href="#top">My Decks</span>
                 </NavLink>
-                <NavLink id="black"  className="link-item" to='/DeckEditor' onClick={handleChangeSidebarColor}>
+                <NavLink className="link-item" to='/DeckEditor' onClick={() => handleChangeSidebarColor('black')}>
                     <FontAwesomeIcon className="link-icon" icon={ faSquarePlus } />
-                    <a className="link-text" href="#top">Deck Editor</a>
+                    <span className="link-text" href="#top">Deck Editor</span>
                 </NavLink>
-                <NavLink id="purple" className="link-item" to='/CardDataBase' onClick={handleChangeSidebarColor}>
+                <NavLink className="link-item" to='/CardDataBase' onClick={() => handleChangeSidebarColor('purple')}>
                     <FontAwesomeIcon className="link-icon" icon={ faMagnifyingGlass } />
-                    <a className="link-text" href="#top">Card Data Base</a>
+                    <span className="link-text" href="#top">Card Data Base</span>
                 </NavLink>
-            </ul>
+            </div>
         </nav>
     );
 

@@ -10,7 +10,7 @@ import './AppLayout.css';
 const AppLayout = () => {
     return (
         <div className="appLayout">
-            <div>
+            <div className="side">
                 <SideBar />
             </div>
             <div className="app-container">

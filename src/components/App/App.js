@@ -1,29 +1,15 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-
+import React, { useEffect, useState } from 'react';
 import './App.css';
-
-
-import AppLayout from '../AppLayout/AppLayout';
-import Home from '../Home/Home';
-import DeckEditor from '../DeckEditor/DeckEditor';
-import CardDataBase from '../CardDataBase/CardDataBase';    
+import AppRouter from '../AppRouter/AppRouter';
 
 function App() {
-  return (
-    <div className="app">
-        <Router>
-            <Routes>
-                <Route path="/" element={<AppLayout />}>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/DeckEditor" element={<DeckEditor />} />
-                    <Route path="/CardDataBase" element={<CardDataBase />} />
-                </Route>
-                <Route path="*" element={<h1>Page not found!</h1>} />
-            </Routes>
-        </Router>
-    </div>
-  );
+    
+    
+    return (
+        <div className="app">            
+            <AppRouter />
+        </div>
+    );
 }
 
 export default App;

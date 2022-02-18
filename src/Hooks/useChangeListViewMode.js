@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+/* import { useEffect, useState } from "react";
 
 const useChangeListViewMode = () => {
     const [activeImages, setActiveImages] = useState(true);
@@ -18,4 +18,4 @@ const useChangeListViewMode = () => {
     return [activeImages, activeList, handleImagesIconOnClick, handleListIconOnClick]
 }
 
-export default useChangeListViewMode;
+export default useChangeListViewMode; */
