@@ -5,14 +5,13 @@
     justify-content: flex-start;
     max-width: 224px;
     height: 100%;
-    transition: max-width 300ms ease-in-out !important;
+    transition: background-color 250ms, max-width 300ms ease-in-out !important;
     z-index: 999;
     overflow: hidden;
 }
 
 .purple {
     background-color: rgba(181, 23, 157, 0.856);
-    transition: background-color 100ms ease;
 }
 .purple .link-item:hover {
     background-color: rgba(86, 175, 78, 0.239) ;
@@ -20,7 +19,6 @@
 
 .black {
     background-color: rgba(20, 20, 20, 0.815);
-    transition: background-color 100ms ease;
     
 
 }

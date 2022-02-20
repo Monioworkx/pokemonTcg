@@ -1,0 +1,13 @@
+.card {
+    margin: 16px;
+    width:250px;
+    height: 32px;
+    border-radius: 50px;
+    /* background: rgba(0, 0, 0, 0.787); */
+    background: transparent;
+    box-sizing: border-box;
+    padding:0px 70px 0 20px;
+    color:#FFF;
+    cursor: pointer;
+    vertical-align: middle;
+}

@@ -14,7 +14,7 @@ const AppRouter = () => (
             <Route path="/" element={<AppLayout />}>
                 <Route path="/" element={<Home />} />
                 <Route path="/DeckEditor" element={<DeckEditor />}>
-                    <Route path="main-deck"index element={<DeckEditorMain />} />
+                    <Route index="main-deck"  element={<DeckEditorMain />} />
                     <Route path="create-deck" element={<DeckEditorCreateNewDeck />} />
                 </Route>
                 <Route path="/CardDataBase" element={<CardDataBase />} />

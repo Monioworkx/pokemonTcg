@@ -7,37 +7,28 @@ const useFirebase = () => {
     const [deckCards, setDeckCards] = useState([]);
     const [deckName, setDeckName] = useState("New Deck");
     const [decks, setDecks] = useState([]);  
+    const [deck, setDeck] = useState(null);
     const [inputData, setInputData] = useState({
         deckName: '',
     });
+    
 
     const decksCollectionRef = collection(db, "decks");
-
+    
     useEffect(() => {
-        let userDecks = [];
-        
-        const getFirebaseDeckData = async () => {
-            const firebaseDeckData = await getDocs(collection(db, 'decks'));
-
-            firebaseDeckData.forEach((deck) => {
-                userDecks.push([{
-                    name: deck.data().name,
-                    cardList: deck.data().cards,
-                }]);
-            })
-        }
-        getFirebaseDeckData();
-        setDecks(userDecks);
+        getDocs(collection(db, 'decks'))
+          .then(decks => {
+            /* console.log(decks.docs[0].data().id) */
+            const resolvedDecks = decks.docs.map(deck => ({ name: deck.data().name, cardList: deck.data().cards, id: deck.id} ));
+            setDecks(resolvedDecks);
+            
+          });
     }, []);
-
-/*     if (decks.length > 0) {
-        console.log(JSON.stringify(decks[1][0].cardList));
-    } */
 
     useEffect(() => {
         setDeckName(inputData.deckName);
     },[inputData]);
-
+    
     const handleDeckNameChange = async (event) => {
         setInputData({
             ...inputData,
@@ -50,7 +41,26 @@ const useFirebase = () => {
         await addDoc(decksCollectionRef, {name: deckName, cards: deckCards} )
     }
 
-    return [decks, deckCards, handleSaveDeck, handleDeckNameChange];
+    const getDeck = (deckId) => {
+        getDocs(collection(db, 'decks'))
+            .then(decks => {
+                const resolvedDecks = decks.docs.map(deck => ({ name: deck.data().name, cardList: deck.data().cards, id: deck.id} ));
+                const deck = resolvedDecks.find(deck => deck.id === deckId); 
+                setDeck(deck || null);
+        }); 
+    }
+
+    const firebaseManager = {
+        decks: decks,
+        deck: deck,
+        deckCards: deckCards,
+        getDeck: getDeck,
+        handleSaveDeck: handleSaveDeck(),
+        handleDeckNameChange: handleDeckNameChange(),
+    }
+
+    /* return [decks, deckCards, handleSaveDeck, handleDeckNameChange, getDeck , deck]; */
+    return firebaseManager;
 }
 
 export default useFirebase;

@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 
 import PokemonApi from "../utils/PokemonApi";
+import useMounted from "./useMounted";
 
 const useSearchCardData = () =>{
+    const isMounted = useMounted();
     const [dataToSearch, setDataToSearch] = useState('Pikachu');
     const [search, setSearch] = useState();
     const [cards, setCards] = useState();
@@ -11,9 +13,9 @@ const useSearchCardData = () =>{
         cardName: '',
         supertype: '',
     });
-    let isMounted = true;
     useEffect(() =>{
         PokemonApi.getPokemonAll(`q=name:${dataToSearch}`).then((cards) => {
+            if (!isMounted) return;
             setLoading(false);
             setCards(cards);
             
@@ -22,6 +24,7 @@ const useSearchCardData = () =>{
 
     useEffect(() =>{
         PokemonApi.getPokemonAll(`q=name:${dataToSearch}*`).then((cards) => {
+            if (!isMounted) return;
             setLoading(false);
             setCards(cards);
             
