@@ -1,18 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import './DeckCardContainer.css';
 import CardNameHolder from "../CardNameHolder/CardNameHolder";
 
 const DeckCardContainer = (props) => {
-    let deckCards = props.deckCards;
+    
+    const deckData = props.deckData;
+    if (deckData !== null) {
+        return (
+            <div className="deckCards-container">
+                { <h2>{deckData.name}</h2> }
+                { deckData.cardList.map(card => <CardNameHolder cardId={card} key={card.toString() } /> )} 
+            </div>
+        );
+    }
+
     return (
-        <div className="deckCards-container">
-            <h2>{props.deckName}</h2>
-            {/* {deckCards.map(cardId => (
-                <CardNameHolder cardId={cardId} />
-            ))} */}
-        </div>
+        <></>
     );
+    
 }
 
 export default DeckCardContainer;

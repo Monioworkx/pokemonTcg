@@ -48,6 +48,10 @@ const useSearchCardData = () =>{
         event.preventDefault();
     }
 
+   
+
+ 
+
     return [loading, cards, handleOnChange, handleSubmit];
 }
 

@@ -1,4 +1,7 @@
 .pokemon-card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     width: 138px;
     height: 192px;
     border-radius: 8px;
@@ -10,9 +13,10 @@
 .pokemon-card-container img {
     max-width: inherit;
     max-height: inherit;
-    height: inherit;
+    height: auto;
     width: inherit;
     object-fit: cover;
+    
 }
 
 .pokemon-card-container:hover {
@@ -21,5 +25,17 @@
     cursor: pointer;
     box-shadow: rgba(73, 192, 57, 0.527) 0px 2px 4px 0px, rgba(32, 226, 7, 0.459) 0px 2px 16px 0px;
     filter: contrast(105%) brightness(105%);
+}
+
+.editor-options-box {
+    width: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(23, 24, 23, 0.616);
+    border-radius: 8px;
+    text-align: center;
+    padding-top: 16px;
+    transform: translateX(100px);
 }
 

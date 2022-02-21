@@ -1,12 +1,34 @@
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 
 import './CardNameHolder.css'
+import PokemonApi from "../../utils/PokemonApi";
+import useMounted from "../../Hooks/useMounted";
 
 const CardNameHolder = (props) => {
+    const cardId = props.cardId;
+    const [cardData, setCardData] = useState();
+    const isMounted = useMounted();
+
+    useEffect(() => {
+        PokemonApi.getCardData(cardId)
+            .then(cardData => { 
+                if (!isMounted) return; 
+                setCardData(cardData)
+            });
+    }, []); 
+
+    if (cardData !== undefined) {
+        return (
+            <div className="card">
+                {<p>{cardData?.name}</p>}
+            </div>
+        );
+    }
+    
     return (
-        <div className="card">
-            <p>{props.cardId}</p>
-        </div>
+        <></>
     );
 }
 

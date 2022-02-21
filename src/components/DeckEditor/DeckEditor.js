@@ -11,7 +11,6 @@ import DeckHolderNewDeck from "../DeckHolderNewDeck/DeckHoldernewDeck";
 
 const DeckEditor = () => {
     const firebaseManager = useFirebase();
-
     return (
         <div className="section-container">
                 {/* <div className="navbar-deckEditor">
@@ -32,8 +31,7 @@ const DeckEditor = () => {
                     <input onChange={handleDeckNameChange} className="input-holder" type="text" name="deckName" placeholder="Card name" />
                     <button type="submit"> Create deck</button>
                 </form> */}
-                <Outlet context={firebaseManager.decks} />
-            
+                <Outlet context={firebaseManager} />
         </div>
     );
 }

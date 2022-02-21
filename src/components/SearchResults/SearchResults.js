@@ -21,7 +21,7 @@ const SearchResults = (props) => {
                 }
             >
                 {(props.cards?.slice(0,24))?.map(card => (
-                    <PokemonCard key={card.id.toString()} cardId={card.id} />
+                    <PokemonCard deckId={props.deckId} addCards={props.addCards} style={props.style} key={card.id.toString()} cardId={card.id} />
                 ))}
             </div>
 

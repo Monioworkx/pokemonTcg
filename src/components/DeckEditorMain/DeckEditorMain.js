@@ -1,7 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, Link, Outlet, useOutletContext } from 'react-router-dom';
-
-import useFirebase from '../../Hooks/useFirebase';
 
 import './DeckEditorMain.css'
 import DeckEditorCreateNewDeck from "../DeckEditorCreateNewDeck/DeckEditorCreateNewDeck";
@@ -11,14 +9,13 @@ import DeckHolderNewDeck from "../DeckHolderNewDeck/DeckHoldernewDeck";
 import './DeckEditorMain.css';
 
 const DeckEditorMain = () => {
-    let decks = useOutletContext();
-    /* console.log(decks); */
+    const firebaseManager = useOutletContext();
+    
     return (
         
         <div className="deck-editor-container">
             <DeckHolderNewDeck />
-                {decks?.map(deck => (
-                    
+                {firebaseManager.decks?.map(deck => (                    
                     <DeckHolder deckCards={deck.cardList} key={deck.id.toString()} deckName={deck.name} deckId={deck.id}/>
                 ))}
         </div>
