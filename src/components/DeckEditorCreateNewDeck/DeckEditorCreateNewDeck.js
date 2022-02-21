@@ -42,7 +42,6 @@ const DeckEditorCreateNewDeck = (props) => {
  
     return (
             <div className="createNewDeck-container">
-                
                 <p >{JSON.stringify(firebaseManager.deck)}</p>
                 <SearchForm activeList={activeList} 
                             activeImages={activeImages} 

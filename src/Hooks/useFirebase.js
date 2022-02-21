@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, arrayUnion } from 'firebase/firestore'; 
+import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, arrayUnion, setDoc } from 'firebase/firestore'; 
 import db from "../utils/firebase";
 import useMounted from "./useMounted";
 
@@ -52,15 +52,21 @@ const useFirebase = () => {
     
     const addCardsToDeck = async (selectedCardId, deckId) => {
         const ref = doc(db, "decks", `${deckId}`);
-        console.log(ref);
             await updateDoc(ref, {
                 cards: arrayUnion(`${selectedCardId}`)
             })
             getDeck(deckId);    
     }
     
+    const createNewDeck = async () => {
+        const docRef = await addDoc(collection(db, "decks"), {
+            name: "New Deck",
+            cards: [],
+          });
+        /* console.log("Document written with ID: ", docRef.id); */
+        return docRef.id;
+    }
    
-
     const firebaseManager = {
         decks: decks,
         deck: deck,
@@ -69,6 +75,7 @@ const useFirebase = () => {
         handleSaveDeck: handleSaveDeck,
         handleDeckNameChange: handleDeckNameChange,
         addCardsToDeck: addCardsToDeck,
+        createNewDeck: createNewDeck,
     }
 
     /* return [decks, deckCards, handleSaveDeck, handleDeckNameChange, getDeck , deck]; */

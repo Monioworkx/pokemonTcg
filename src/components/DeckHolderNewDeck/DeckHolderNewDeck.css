@@ -12,48 +12,15 @@
     z-index: 1;
     margin-top: 16px;
     margin-right: 16px;
-    filter: blur(0.3px)
-/*     border: 1px solid rgba(83, 43, 68, 0.767);
- */}
+    filter: blur(0.3px);
+    border: none;
+}
 
 .deckholder-container:hover {
     cursor: pointer;
     transform: scale(1.1);
     transition: all 150ms ease-in-out ;
-    
 }
-
-/* .layer1-img {
-    width:180px;
-    border-radius: 8px;
-    opacity: 0.9;
-    filter:brightness(100%) blur(0.8px);
-    box-shadow: rgba(70, 6, 48, 0.212) 0px 0px 4px 0px, rgba(145, 40, 149, 0.32) 0px 2px 16px 0px;
-
-}
-.deckholder-container:hover .layer1-img {
-    width:180px;
-    border-radius: 8px;
-    opacity: 1;
-    transform: scale();
-    filter: brightness(110%) blur(0px);
-    transition: all 200ms ease-in-out !important;
-}
-
-.deckName-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    background-color: rgba(145, 40, 149, 0.32);
-    border-radius: 50px;
-    vertical-align: middle;
-    padding: 16px; 
-}
-    */
-
 
 .plus-icon {
     font-size: 4rem;

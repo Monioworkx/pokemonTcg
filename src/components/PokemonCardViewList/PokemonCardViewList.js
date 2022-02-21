@@ -1,17 +1,20 @@
 import React, { useEffect, useState} from "react";
 
 import './PokemonCardViewList.css';
-
+import useMounted from "../../Hooks/useMounted";
 import PokemonApi from '../../utils/PokemonApi'
 
 const PokemonCardViewList = (props) => {
+    const isMounted = useMounted();
     const cardId = props.cardId;
     const [cardData, setCardData] = useState();
     
-    let isMounted = true;
     useEffect(() =>{
         PokemonApi.getCardData(cardId)
-            .then(cardData => setCardData(cardData));
+            .then(cardData => {
+                if (!isMounted) return;
+                setCardData(cardData)
+            });
             
     }, []); 
 

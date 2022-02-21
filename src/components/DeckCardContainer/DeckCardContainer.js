@@ -9,7 +9,10 @@ const DeckCardContainer = (props) => {
     if (deckData !== null) {
         return (
             <div className="deckCards-container">
-                { <h2>{deckData.name}</h2> }
+                { <div className="deckName">
+                    <h2>{deckData.name.toUpperCase()}</h2>
+                  </div> 
+                }
                 { deckData.cardList.map(card => <CardNameHolder cardId={card} key={card.toString() } /> )} 
             </div>
         );
