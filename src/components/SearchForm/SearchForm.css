@@ -82,3 +82,7 @@
     transform: scale(1.2);
     border-bottom: 1px solid rgba(144, 214, 52, 0.616);
 }
+
+.not-visible {
+    display: none;
+}

@@ -13,6 +13,7 @@ const useSearchCardData = () =>{
         cardName: '',
         supertype: '',
     });
+    
     useEffect(() =>{
         PokemonApi.getPokemonAll(`q=name:${dataToSearch}`).then((cards) => {
             if (!isMounted) return;
@@ -29,7 +30,7 @@ const useSearchCardData = () =>{
             setCards(cards);
             
         });
-    }, [dataToSearch]); 
+    }, [dataToSearch, isMounted]); 
 
     useEffect(() => {
         setSearch(inputData.cardName);
@@ -47,10 +48,6 @@ const useSearchCardData = () =>{
         setLoading(true);
         event.preventDefault();
     }
-
-   
-
- 
 
     return [loading, cards, handleOnChange, handleSubmit];
 }

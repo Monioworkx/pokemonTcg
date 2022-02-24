@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import './SearchForm.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImage, faList } from "@fortawesome/free-solid-svg-icons";
-
-import SearchResults from "../SearchResults/SearchResults";
+import { faImage, faList, faUser } from "@fortawesome/free-solid-svg-icons";
 
 const SearchForm = (props) => {
+    const deckId = props.deckId;
+
     return (
         <div className="search-form-container">
             <form className="form-input-container" onSubmit={props.handleSubmit}>
@@ -30,6 +30,11 @@ const SearchForm = (props) => {
                     onClick={props.handleListIconOnClick}
                     className={props.activeList ? "view-icon onGreen" : "view-icon"}
                     icon={faList} 
+                />
+                <FontAwesomeIcon 
+                    onClick={props.handleShowUserDeckCards}
+                    className={props.activeUserDeckIcon ? "view-icon onGreen" : "view-icon" && deckId ? "view-icon" : "not-visible"}
+                    icon={faUser} 
                 /> 
             </div>    
         </div>

@@ -17,12 +17,13 @@ const CardNameHolder = (props) => {
                 if (!isMounted) return; 
                 setCardData(cardData)
             });
-    }, []); 
+    }, [cardId, isMounted]); 
 
     if (cardData !== undefined) {
         return (
             <div className="card">
-                {<p>{cardData?.name}</p>}
+                <p className="cardName">{cardData?.name}</p>
+                <img className="cardLogo set-logo" src={cardData?.set.images.symbol} alt="not" />
             </div>
         );
     }

@@ -10,11 +10,11 @@ const useFirebase = () => {
     const [deckName, setDeckName] = useState("New Deck");
     const [decks, setDecks] = useState([]);  
     const [deck, setDeck] = useState(null);
+    const [deckId, setDeckId] = useState();
     const [inputData, setInputData] = useState({
         deckName: '',
     });
     
-
     const decksCollectionRef = collection(db, "decks");
     
     useEffect(() => {
@@ -23,24 +23,35 @@ const useFirebase = () => {
             const resolvedDecks = decks.docs?.map(deck => ({ name: deck.data().name, cardList: deck.data().cards, id: deck.id} ));
             setDecks(resolvedDecks);
           });
-    }, []); 
+    }, [deckName]); 
     
     useEffect(() => {
         setDeckName(inputData.deckName);
     },[inputData]);
     
-    const handleDeckNameChange = async (event) => {
+    const handleDeckNameChange = async (event) => { //OK
         setInputData({
             ...inputData,
             [event.currentTarget.name] : event.currentTarget.value
         });
-    }
+        setDeckName(inputData.deckName)
+    } 
     
-    const handleSaveDeck = async (event) => {
+    const handleSaveDeckName = async (event, deckId) => {       // OK
+        event.preventDefault();
+        
+        const ref = doc(db, "decks", `${deckId}`);
+                await updateDoc(ref, {
+                    name: deckName,
+                })
+        getDeck(deckId);
+    } 
+    
+    const handleSaveDeck = async (event) => { // OK
         event.preventDefault();
         await addDoc(decksCollectionRef, {name: deckName, cards: deckCards} )
     }
- 
+
     const getDeck = async (deckId) => {
         await getDocs(collection(db, 'decks'))
             .then(decks => {
@@ -49,15 +60,20 @@ const useFirebase = () => {
                 setDeck(deck);
         }); 
     } 
-    
+
     const addCardsToDeck = async (selectedCardId, deckId) => {
         const ref = doc(db, "decks", `${deckId}`);
-            await updateDoc(ref, {
-                cards: arrayUnion(`${selectedCardId}`)
-            })
-            getDeck(deckId);    
+        await updateDoc(ref, {
+            cards: arrayUnion(`${selectedCardId}`)
+        });
+        await getDocs(collection(db, 'decks'))
+        .then(decks => {
+            const resolvedDecks = decks.docs.map(deck => ({ name: deck.data().name, cardList: deck.data().cards, id: deck.id} ));
+            const currentDeck = resolvedDecks.find(deck => deck.id === deckId); 
+            setDeck(currentDeck);
+        }); 
     }
-    
+
     const createNewDeck = async () => {
         const docRef = await addDoc(collection(db, "decks"), {
             name: "New Deck",
@@ -70,15 +86,19 @@ const useFirebase = () => {
     const firebaseManager = {
         decks: decks,
         deck: deck,
+        setDeck: setDeck,
+        deckId: deckId,
+        setDeckId: setDeckId,
+        deckName: deckName,
         deckCards: deckCards,
         getDeck: getDeck,
         handleSaveDeck: handleSaveDeck,
         handleDeckNameChange: handleDeckNameChange,
+        handleSaveDeckName: handleSaveDeckName, 
         addCardsToDeck: addCardsToDeck,
         createNewDeck: createNewDeck,
     }
 
-    /* return [decks, deckCards, handleSaveDeck, handleDeckNameChange, getDeck , deck]; */
     return firebaseManager;
 }
 

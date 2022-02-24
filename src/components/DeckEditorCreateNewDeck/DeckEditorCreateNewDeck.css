@@ -2,10 +2,14 @@
     background-color: rgba(70, 63, 58, 0.493);
     border-radius: 8px; 
     box-shadow: rgba(41, 85, 104, 0.12) 0px 2px 4px 0px, rgba(120, 197, 230, 0.32) 0px 2px 16px 0px;
-    display: grid;
+    /* display: grid;
     grid-template-areas: "search search search deck"
                          "sview sview sview deck"
-                         "sview sview sview deck";
+                         "sview sview sview deck"; */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
 
     /* min-width: calc(100vw - 224px) */
     width: 100%;

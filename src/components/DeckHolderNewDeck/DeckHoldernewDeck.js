@@ -9,17 +9,13 @@ import useFirebase from "../../Hooks/useFirebase";
 const DeckHolderNewDeck = () => {
     const firebaseManager = useFirebase();
     const navigate = useNavigate();
-    const [deckId, setDeckId] = useState();
-    /* const [pathName, setPathName] = useState("create-deck?deckId=rBxF3phne9jd2eXvqb9i"); */
 
     const handleOnClick = (event) => {
         firebaseManager.createNewDeck().then(deckId => navigate(`create-deck?deckId=${deckId}`));
     }
 
-/*      if(deckId !== undefined) {
-        setPathName(`create-deck?deckId=${deckId}`) */
     return (
-        <button onClick={handleOnClick} /* to={{ pathname: `create-deck?deckId=${deckId}`}} */ className="deckholder-container">
+        <button onClick={handleOnClick} className="deckholder-container">
             <FontAwesomeIcon className="plus-icon" icon={faPlus} />
         </button>
     );

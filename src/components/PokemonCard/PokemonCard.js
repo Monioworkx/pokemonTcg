@@ -4,10 +4,13 @@ import './PokemonCard.css';
 
 import PokemonApi from '../../utils/PokemonApi'
 import useMounted from "../../Hooks/useMounted";
-import useFirebase from "../../Hooks/useFirebase";
+import { useOutletContext } from "react-router-dom";
 
 const PokemonCard = (props) => {
-    const firebaseManager = useFirebase();
+    let firebaseManager = useOutletContext();
+    const addCardsToDeck = firebaseManager?.addCardsToDeck;
+    const updateDeck = firebaseManager?.getDeck;
+
     const cardId = props.cardId;
     const deckId = props.deckId;
     const [cardData, setCardData] = useState();
@@ -20,19 +23,21 @@ const PokemonCard = (props) => {
                 if (!isMounted) return; 
                 setCardData(cardData)
             });
-    }, []); 
+    }, [cardId, isMounted]); 
 
     const handleIsClicked = (event) => {
         setIsClick(true);
     } 
 
     const handleAddCardToDeck = (event) => {
-        firebaseManager.addCardsToDeck(cardId, deckId);
+        
+        addCardsToDeck(cardId, deckId);
+        updateDeck(deckId);
     } 
 
     return (
         <div className="pokemon-card-container">
-            <img onClick={handleAddCardToDeck} src={cardData?.images.small} alt='Searching card!' />
+            <img onClick={() => handleAddCardToDeck()} src={cardData?.images.small} alt='Searching card!' />
             <div style={isClicked ? props.style : null} className="editor-options-box">
                 hola
             </div>

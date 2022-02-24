@@ -16,7 +16,7 @@ const PokemonCardViewList = (props) => {
                 setCardData(cardData)
             });
             
-    }, []); 
+    }, [cardId,isMounted]); 
 
     return (
         <tr className="tr-card">
