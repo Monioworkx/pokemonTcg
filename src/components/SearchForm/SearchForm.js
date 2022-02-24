@@ -35,7 +35,7 @@ const SearchForm = (props) => {
                     onClick={props.handleShowUserDeckCards}
                     className={props.activeUserDeckIcon ? "view-icon onGreen" : "view-icon" && deckId ? "view-icon" : "not-visible"}
                     icon={faUser} 
-                /> 
+                />
             </div>    
         </div>
     );

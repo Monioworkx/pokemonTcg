@@ -30,7 +30,6 @@ const PokemonCard = (props) => {
     } 
 
     const handleAddCardToDeck = (event) => {
-        
         addCardsToDeck(cardId, deckId);
         updateDeck(deckId);
     } 
@@ -39,7 +38,6 @@ const PokemonCard = (props) => {
         <div className="pokemon-card-container">
             <img onClick={() => handleAddCardToDeck()} src={cardData?.images.small} alt='Searching card!' />
             <div style={isClicked ? props.style : null} className="editor-options-box">
-                hola
             </div>
         </div>
     );

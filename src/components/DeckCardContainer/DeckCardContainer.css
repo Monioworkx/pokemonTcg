@@ -23,3 +23,33 @@
     background-color: rgba(84, 153, 231, 0.301);
     border-radius: 8px;
 }
+
+.name {
+    width: 200px !important;
+    padding: 0px 0px 0px 0px !important;
+    text-align: center;
+    color: #fff;
+}
+
+.saveButton {
+    text-decoration: none;
+    border: none;
+    line-height: 20px;
+    text-decoration: none;
+    background-color: rgba(144, 214, 52, 0.678);
+    border-radius: 8px;
+    border: none;
+    color: #FFF;
+    cursor: pointer;
+    margin: 16px;
+    width: 250px;
+    height: 32px;
+    border-radius: 50px;
+    font-size: 1rem;
+    box-shadow: rgb(41 85 104 / 12%) 0px 2px 4px 0px, rgb(120 197 230 / 32%) 0px 2px 16px 0px;
+}
+
+.saveButton:hover {
+    filter: brightness(110%);
+    text-shadow: 0px 0px 2px rgba(214, 52, 200, 0.678);
+}

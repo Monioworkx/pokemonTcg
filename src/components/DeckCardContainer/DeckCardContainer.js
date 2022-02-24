@@ -15,8 +15,8 @@ const DeckCardContainer = (props) => {
             <div className="deckCards-container">
                 { <div className="deckName">
                     <form className="form-input-container"  onSubmit={(event) => handleSaveDeckName(event, props.deckId)}>
-                        <input onChange={(event) => handleDeckNameChange(event)} className="input-holder" type="text" name="deckName" placeholder={deck.name.toUpperCase()} />
-                        <button type="submit"> Save deck</button>
+                        <input  onChange={(event) => handleDeckNameChange(event)} className="input-holder name" type="text" name="deckName" placeholder={deck.name.toUpperCase()} />
+                        <button className="saveButton" type="submit"> Save deck</button>
                     </form>
                   </div> 
                 }

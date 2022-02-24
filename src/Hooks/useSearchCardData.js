@@ -19,7 +19,6 @@ const useSearchCardData = () =>{
             if (!isMounted) return;
             setLoading(false);
             setCards(cards);
-            
         });
     }, []);
 
@@ -28,7 +27,6 @@ const useSearchCardData = () =>{
             if (!isMounted) return;
             setLoading(false);
             setCards(cards);
-            
         });
     }, [dataToSearch, isMounted]); 
 
@@ -41,8 +39,8 @@ const useSearchCardData = () =>{
             ...inputData,
             [event.target.name] : event.target.value
         }); 
-        
     }
+
     const handleSubmit = (event) => {
         setDataToSearch(search);
         setLoading(true);

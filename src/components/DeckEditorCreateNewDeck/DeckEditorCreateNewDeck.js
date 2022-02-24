@@ -2,9 +2,6 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 
 import './DeckEditorCreateNewDeck.css';
-import SearchForm from "../SearchForm/SearchForm";
-import SearchResults from "../SearchResults/SearchResults";
-import useSearchCardData from "../../Hooks/useSearchCardData";
 import DeckCardContainer from "../DeckCardContainer/DeckCardContainer"
 import { useSearchParams } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
