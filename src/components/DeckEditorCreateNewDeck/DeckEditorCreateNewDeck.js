@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useState } from "react";
 
 import './DeckEditorCreateNewDeck.css';
 import DeckCardContainer from "../DeckCardContainer/DeckCardContainer"
@@ -23,10 +22,10 @@ const DeckEditorCreateNewDeck = (props) => {
     }
     
     return (
-            <div className="createNewDeck-container">
-                <CardDataBase deckCards={firebaseManager.deck?.cardList} deckId={deckId} />
-                <DeckCardContainer deckId={deckId} />
-            </div>
+        <div className="createNewDeck-container">
+            <CardDataBase deckCards={firebaseManager.deck?.cardList} deckId={deckId} />
+            <DeckCardContainer deckId={deckId} />
+        </div>
     );
 }
 

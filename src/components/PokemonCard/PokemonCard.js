@@ -25,9 +25,9 @@ const PokemonCard = (props) => {
             });
     }, [cardId, isMounted]); 
 
-    const handleIsClicked = (event) => {
+/*     const handleIsClicked = (event) => {
         setIsClick(true);
-    } 
+    }  */
 
     const handleAddCardToDeck = (event) => {
         addCardsToDeck(cardId, deckId);

@@ -5,9 +5,13 @@ import { useEffect } from "react";
 import './CardNameHolder.css'
 import PokemonApi from "../../utils/PokemonApi";
 import useMounted from "../../Hooks/useMounted";
+import { useOutletContext } from "react-router-dom";
 
 const CardNameHolder = (props) => {
+    const firebaseManager = useOutletContext();
+    const removeCardInDeck = firebaseManager?.removeCardInDeck;
     const cardId = props.cardId;
+    const deckId = props.deckId;
     const [cardData, setCardData] = useState();
     const isMounted = useMounted();
 
@@ -19,9 +23,14 @@ const CardNameHolder = (props) => {
             });
     }, [cardId, isMounted]); 
 
+    const handleRemoveCardOnClick = (event) => {
+        removeCardInDeck(cardId, deckId);
+        console.log(cardId);
+    }
+    
     if (cardData !== undefined) {
         return (
-            <div className="card">
+            <div onClick={(event) => handleRemoveCardOnClick(event)} className="card">
                 <p className="cardName">{cardData?.name}</p>
                 <img className="cardLogo set-logo" src={cardData?.set.images.symbol} alt="not" />
             </div>

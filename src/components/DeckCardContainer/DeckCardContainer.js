@@ -9,6 +9,7 @@ const DeckCardContainer = (props) => {
     const handleDeckNameChange = firebaseManager.handleDeckNameChange;
     const handleSaveDeckName = firebaseManager.handleSaveDeckName;
     const deck = firebaseManager.deck;
+    const deckId= props.deckId;
     
     if (deck !== null) {
         return (
@@ -20,7 +21,7 @@ const DeckCardContainer = (props) => {
                     </form>
                   </div> 
                 }
-                { deck.cardList.map(card => <CardNameHolder cardId={card} key={card.toString() } /> )} 
+                { deck.cardList.map(card => <CardNameHolder deckId={deckId} cardId={card} key={card.toString() } /> )} 
             </div>
         );
     }

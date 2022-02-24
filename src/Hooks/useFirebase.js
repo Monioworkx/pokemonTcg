@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, arrayUnion, setDoc } from 'firebase/firestore'; 
+import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, arrayUnion, setDoc, arrayRemove } from 'firebase/firestore'; 
 import db from "../utils/firebase";
 import useMounted from "./useMounted";
 
@@ -74,6 +74,14 @@ const useFirebase = () => {
         }); 
     }
 
+    const removeCardInDeck = async (selectedCardId, deckId) => {
+        const ref = doc(db, "decks", `${deckId}`);
+        await updateDoc(ref, {
+            cards: arrayRemove(`${selectedCardId}`)
+        });
+        getDeck(deckId);
+    }
+
     const createNewDeck = async () => {
         const docRef = await addDoc(collection(db, "decks"), {
             name: "New Deck",
@@ -86,16 +94,17 @@ const useFirebase = () => {
     const firebaseManager = {
         decks: decks,
         deck: deck,
-        setDeck: setDeck,
         deckId: deckId,
-        setDeckId: setDeckId,
         deckName: deckName,
         deckCards: deckCards,
+        setDeck: setDeck,
+        setDeckId: setDeckId,
         getDeck: getDeck,
         handleSaveDeck: handleSaveDeck,
         handleDeckNameChange: handleDeckNameChange,
         handleSaveDeckName: handleSaveDeckName, 
         addCardsToDeck: addCardsToDeck,
+        removeCardInDeck: removeCardInDeck,
         createNewDeck: createNewDeck,
     }
 
