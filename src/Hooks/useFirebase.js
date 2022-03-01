@@ -66,12 +66,7 @@ const useFirebase = () => {
         await updateDoc(ref, {
             cards: arrayUnion(`${selectedCardId}`)
         });
-        await getDocs(collection(db, 'decks'))
-        .then(decks => {
-            const resolvedDecks = decks.docs.map(deck => ({ name: deck.data().name, cardList: deck.data().cards, id: deck.id} ));
-            const currentDeck = resolvedDecks.find(deck => deck.id === deckId); 
-            setDeck(currentDeck);
-        }); 
+        getDeck(deckId);
     }
 
     const removeCardInDeck = async (selectedCardId, deckId) => {

@@ -25,7 +25,6 @@ const CardNameHolder = (props) => {
 
     const handleRemoveCardOnClick = (event) => {
         removeCardInDeck(cardId, deckId);
-        console.log(cardId);
     }
     
     if (cardData !== undefined) {

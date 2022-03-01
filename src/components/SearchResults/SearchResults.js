@@ -1,31 +1,31 @@
-import React, { useEffect, useState } from "react";
-
+import React from "react";
 
 import './SearchResults.css';
 import PokemonCard from '../../components/PokemonCard/PokemonCard'
 import PokemonCardViewList from "../PokemonCardViewList/PokemonCardViewList";
 
 const SearchResults = (props) => {
-    
     const viewUserDeck = props.viewUserDeck;
-    const cards = props.cards;
-    const deckData = props.polla
+    const pokemonApiSearchResultsCards = props.cards;
+    const userDeckCardList = props.userDeckCardList;
        
     return (
         <div className="search-results-deck-container">             
             <div className={props.loading ? "lds-ring" : "lds-ring not-visible"}><div></div><div></div><div></div><div></div></div>
-            <div 
-                id="image" 
+            <div id="image" 
                 className={
                     `${props.loading ? "not-visible image-container" : "image-container"}  
                     ${props.activeImages ? " " : "not-active"}`
                 }
             >
-                {((viewUserDeck === true ? deckData : cards)?.slice(0,24))?.map(card => (
-                    <PokemonCard  deckId={props.deckId} style={props.style} key={viewUserDeck === true ? card.toString() : card.id.toString()} cardId={viewUserDeck === true ? card : card.id} />
+                {((viewUserDeck === true ? userDeckCardList : pokemonApiSearchResultsCards)?.slice(0,24))?.map(card => (
+                    <PokemonCard  
+                        deckId={props.deckId} 
+                        key={viewUserDeck === true ? card.toString() : card.id.toString()} 
+                        cardId={viewUserDeck === true ? card : card.id} 
+                    />
                 ))}
             </div>
-
             <div id="list" className={props.activeList ? "list-container" : "list-container not-active"}>
                 <div className="table-container">
                     <table>
@@ -40,17 +40,18 @@ const SearchResults = (props) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {((viewUserDeck === true ? deckData : cards)?.slice(0,33))?.map(card => (
-                                <PokemonCardViewList key={viewUserDeck === true ? card.toString() : card.id.toString()} cardId={viewUserDeck === true ? card : card.id} />
+                            {((viewUserDeck === true ? userDeckCardList : pokemonApiSearchResultsCards)?.slice(0,33))?.map(card => (
+                                <PokemonCardViewList 
+                                    key={viewUserDeck === true ? card.toString() : card.id.toString()} 
+                                    cardId={viewUserDeck === true ? card : card.id} 
+                                />
                             ))}
                         </tbody>
                     </table>
                 </div>
             </div> 
         </div>
-    
     ) 
-
 }
 
 export default SearchResults;

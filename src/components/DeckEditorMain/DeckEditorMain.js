@@ -10,16 +10,17 @@ import './DeckEditorMain.css';
 const DeckEditorMain = () => {
     const firebaseManager = useOutletContext();
     const decks = firebaseManager.decks;
-    
+
     return (
         
         <div className="deck-editor-container">
             <DeckHolderNewDeck />
-                {decks?.map(deck => (                    
-                    <DeckHolder deckCards={deck.cardList} key={deck.id.toString()} deckName={deck.name} deckId={deck.id}/>
-                ))}
+            {decks?.map(deck => (                    
+                <DeckHolder deckCards={deck.cardList} key={deck.id.toString()} deckName={deck.name} deckId={deck.id}/>
+            ))}
         </div>
     );
 }
 
 export default DeckEditorMain;
+
