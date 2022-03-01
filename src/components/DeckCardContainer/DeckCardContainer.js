@@ -21,7 +21,7 @@ const DeckCardContainer = (props) => {
                     </form>
                   </div> 
                 }
-                { deck.cardList.map(card => <CardNameHolder deckId={deckId} cardId={card} key={card.toString() } /> )} 
+                { deck.deckCards.map(card => <CardNameHolder deckId={deckId} cardId={card} key={card.toString() } /> )} 
             </div>
         );
     }

@@ -16,7 +16,7 @@ const DeckEditorMain = () => {
         <div className="deck-editor-container">
             <DeckHolderNewDeck />
             {decks?.map(deck => (                    
-                <DeckHolder deckCards={deck.cardList} key={deck.id.toString()} deckName={deck.name} deckId={deck.id}/>
+                <DeckHolder deckCards={deck.deckCards} key={deck.id.toString()} deckName={deck.name} deckId={deck.id}/>
             ))}
         </div>
     );

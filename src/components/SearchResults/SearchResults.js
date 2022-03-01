@@ -7,7 +7,7 @@ import PokemonCardViewList from "../PokemonCardViewList/PokemonCardViewList";
 const SearchResults = (props) => {
     const viewUserDeck = props.viewUserDeck;
     const pokemonApiSearchResultsCards = props.cards;
-    const userDeckCardList = props.userDeckCardList;
+    const userDeckCards = props.userDeckCards;
        
     return (
         <div className="search-results-deck-container">             
@@ -18,7 +18,7 @@ const SearchResults = (props) => {
                     ${props.activeImages ? " " : "not-active"}`
                 }
             >
-                {((viewUserDeck === true ? userDeckCardList : pokemonApiSearchResultsCards)?.slice(0,24))?.map(card => (
+                {((viewUserDeck === true ? userDeckCards : pokemonApiSearchResultsCards)?.slice(0,24))?.map(card => (
                     <PokemonCard  
                         deckId={props.deckId} 
                         key={viewUserDeck === true ? card.toString() : card.id.toString()} 
@@ -40,7 +40,7 @@ const SearchResults = (props) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {((viewUserDeck === true ? userDeckCardList : pokemonApiSearchResultsCards)?.slice(0,33))?.map(card => (
+                            {((viewUserDeck === true ? userDeckCards : pokemonApiSearchResultsCards)?.slice(0,33))?.map(card => (
                                 <PokemonCardViewList 
                                     key={viewUserDeck === true ? card.toString() : card.id.toString()} 
                                     cardId={viewUserDeck === true ? card : card.id} 

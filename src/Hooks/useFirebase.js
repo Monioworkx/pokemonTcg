@@ -20,7 +20,7 @@ const useFirebase = () => {
     useEffect(() => {
         getDocs(collection(db, 'decks'))
           .then(decks => {
-            const resolvedDecks = decks.docs?.map(deck => ({ name: deck.data().name, cardList: deck.data().cards, id: deck.id} ));
+            const resolvedDecks = decks.docs?.map(deck => ({ name: deck.data().name, deckCards: deck.data().cards, id: deck.id} ));
             setDecks(resolvedDecks);
           });
     }, [deckName]); 
@@ -29,7 +29,7 @@ const useFirebase = () => {
         setDeckName(inputData.deckName);
     },[inputData]);
     
-    const handleDeckNameChange = async (event) => { //OK
+    const handleDeckNameChange = async (event) => { 
         setInputData({
             ...inputData,
             [event.currentTarget.name] : event.currentTarget.value
@@ -37,7 +37,7 @@ const useFirebase = () => {
         setDeckName(inputData.deckName)
     } 
     
-    const handleSaveDeckName = async (event, deckId) => {       // OK
+    const handleSaveDeckName = async (event, deckId) => {       
         event.preventDefault();
         
         const ref = doc(db, "decks", `${deckId}`);
@@ -47,15 +47,15 @@ const useFirebase = () => {
         getDeck(deckId);
     } 
     
-    const handleSaveDeck = async (event) => { // OK
+    const handleSaveDeck = async (event) => { 
         event.preventDefault();
         await addDoc(decksCollectionRef, {name: deckName, cards: deckCards} )
     }
 
-    const getDeck = async (deckId) => {
+    const getDeck = async (deckId) => { 
         await getDocs(collection(db, 'decks'))
             .then(decks => {
-                const resolvedDecks = decks.docs.map(deck => ({ name: deck.data().name, cardList: deck.data().cards, id: deck.id} ));
+                const resolvedDecks = decks.docs.map(deck => ({ name: deck.data().name, deckCards: deck.data().cards, id: deck.id} ));
                 const deck = resolvedDecks.find(deck => deck.id === deckId); 
                 setDeck(deck);
         }); 
@@ -82,7 +82,6 @@ const useFirebase = () => {
             name: "New Deck",
             cards: [],
           });
-        /* console.log("Document written with ID: ", docRef.id); */
         return docRef.id;
     }
    

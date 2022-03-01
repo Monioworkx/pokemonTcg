@@ -9,7 +9,7 @@ import useSearchCardData from "../../Hooks/useSearchCardData";
 
 const CardDataBase = (props) => {
     const firebaseManager = useOutletContext();
-    const [userDeckCardList, setUserDeckCardList] = useState();
+    const [userDeckCards, setUserDeckCards] = useState();
     const [activeUserDeckIcon, setActiveUserDeckIcon] = useState(false)
     const [loading, cards, handleOnChange, handleSubmit] = useSearchCardData();
     const [activeImages, setActiveImages] = useState(true);
@@ -27,7 +27,7 @@ const CardDataBase = (props) => {
     }
 
     const handleShowUserDeckCards = (event) => {
-        setUserDeckCardList(firebaseManager.deck.cardList)
+        setUserDeckCards(firebaseManager.deck.deckCards)
         setViewUserDeck(true); 
         setActiveUserDeckIcon(true);
         
@@ -56,7 +56,7 @@ const CardDataBase = (props) => {
                                cards={cards}
                                deckId={props.deckId}
                                viewUserDeck={viewUserDeck}
-                               userDeckCardList={userDeckCardList}
+                               userDeckCards={userDeckCards}
                 />
             </div>
     );
