@@ -14,14 +14,16 @@ const DeckCardContainer = (props) => {
     if (deck !== null) {
         return (
             <div className="deckCards-container">
-                { <div className="deckName">
+                {<div className="deckName">
                     <form className="form-input-container"  onSubmit={(event) => handleSaveDeckName(event, props.deckId)}>
-                        <input  onChange={(event) => handleDeckNameChange(event)} className="input-holder name" type="text" name="deckName" placeholder={deck.name.toUpperCase()} />
+                        <input  onChange={(event) => handleDeckNameChange(event)} className="input-holder name" type="text" name="deckName" placeholder={deck.deckName.toUpperCase()} />
                         <button className="saveButton" type="submit"> Save deck</button>
                     </form>
                   </div> 
                 }
-                { deck.deckCards.map(card => <CardNameHolder deckId={deckId} cardId={card} key={card.toString() } /> )} 
+                {deck.deckCards.map(card => 
+                    <CardNameHolder key={card.toString()} deckId={deckId} cardId={card}  /> 
+                )} 
             </div>
         );
     }

@@ -3,3 +3,23 @@
     
 }
 
+td {
+    padding-bottom: 4px;
+}
+
+.tr-card {
+    cursor: pointer;
+    line-height: 1.5;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.tr-card:hover {
+    background-color: rgba(255,255,255, 0.4);
+}
+
+.column5 {
+    text-overflow: ellipsis !important;
+    overflow: hidden;
+    white-space: nowrap;
+}

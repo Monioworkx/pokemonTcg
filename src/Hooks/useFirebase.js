@@ -20,14 +20,14 @@ const useFirebase = () => {
     useEffect(() => {
         getDocs(collection(db, 'decks'))
           .then(decks => {
-            const resolvedDecks = decks.docs?.map(deck => ({ name: deck.data().name, deckCards: deck.data().cards, id: deck.id} ));
+            const resolvedDecks = decks.docs?.map(deck => ({ deckName: deck.data().name, deckCards: deck.data().cards, deckId: deck.id} ));
             setDecks(resolvedDecks);
           });
     }, [deckName]); 
     
     useEffect(() => {
         setDeckName(inputData.deckName);
-    },[inputData]);
+    },[deckName]);
     
     const handleDeckNameChange = async (event) => { 
         setInputData({
@@ -55,8 +55,8 @@ const useFirebase = () => {
     const getDeck = async (deckId) => { 
         await getDocs(collection(db, 'decks'))
             .then(decks => {
-                const resolvedDecks = decks.docs.map(deck => ({ name: deck.data().name, deckCards: deck.data().cards, id: deck.id} ));
-                const deck = resolvedDecks.find(deck => deck.id === deckId); 
+                const resolvedDecks = decks.docs.map(deck => ({ deckName: deck.data().name, deckCards: deck.data().cards, deckId: deck.id} ));
+                const deck = resolvedDecks.find(deck => deck.deckId === deckId); 
                 setDeck(deck);
         }); 
     } 

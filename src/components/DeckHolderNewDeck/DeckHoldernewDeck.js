@@ -1,5 +1,5 @@
-import react, { useCallback, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import './DeckHolderNewDeck.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,8 +19,6 @@ const DeckHolderNewDeck = () => {
             <FontAwesomeIcon className="plus-icon" icon={faPlus} />
         </button>
     );
-    
-    
 }
 
 export default DeckHolderNewDeck;

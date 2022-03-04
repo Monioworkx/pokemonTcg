@@ -1,0 +1,9 @@
+1 capa de layout , 
+1 capa de shared , todos los compos compartidos reutilizables y tontos,
+( comprobar el setup/scalfolding de next , y copiar )
+
+
+2 utilizar index.js en cada path que lo requiera
+
+
+

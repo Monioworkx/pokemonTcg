@@ -41,7 +41,8 @@ const SearchResults = (props) => {
                         </thead>
                         <tbody>
                             {((viewUserDeck === true ? userDeckCards : pokemonApiSearchResultsCards)?.slice(0,33))?.map(card => (
-                                <PokemonCardViewList 
+                                <PokemonCardViewList
+                                    deckId={props.deckId} 
                                     key={viewUserDeck === true ? card.toString() : card.id.toString()} 
                                     cardId={viewUserDeck === true ? card : card.id} 
                                 />
